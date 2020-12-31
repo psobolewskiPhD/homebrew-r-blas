@@ -55,7 +55,7 @@ class RBlas < Formula
     ]
     
     # Enable user choice of BLAS, recommend reading: https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Linear-algebra
-      if build.with?("openblas") && build.with("accelerate")
+      if build.with?("openblas") && build.with?("accelerate")
         odie "Options --with-openblas and --with-accelerate are mutually exclusive"
       end
       if build.with? "openblas"
