@@ -1,5 +1,5 @@
-class R-blas < Formula
-  desc "Software environment for statistical computing"
+class rblas < Formula
+  desc "Software environment for statistical computing, option for external BLAS"
   homepage "https://www.r-project.org/"
   url "https://cran.r-project.org/src/base/R-4/R-4.0.3.tar.gz"
   sha256 "09983a8a78d5fb6bc45d27b1c55f9ba5265f78fa54a55c13ae691f87c5bb9e0d"
@@ -20,7 +20,6 @@ class R-blas < Formula
 
   option "with-Accelerate", "Use Apple Accelerate for BLAS"
   option "with-ExtLAPACK", "Use external LAPACK (from BLAS lib)"
-
 
   depends_on "pkg-config" => :build
   depends_on "gcc" # for gfortran
@@ -60,7 +59,7 @@ class R-blas < Formula
       "--disable-java",
     ]
     
-    # Enable user choice of BLAS
+    # Enable user choice of BLAS, recommend reading: https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Linear-algebra
       if build.with? "openblas"
 	args << "--with-blas=-L#{Formula["openblas"].opt_lib} -lopenblas"
       end
