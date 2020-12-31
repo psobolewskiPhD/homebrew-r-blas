@@ -13,13 +13,6 @@ class RBlas < Formula
     regex(%r{href=(?:["']?|.*?/)R[._-]v?(\d+(?:\.\d+)+)\.t}i)
   end
 
-  bottle do
-    sha256 "d3859bfc06a1cac65a60a43f105aec2b3c2ebdb465b69eb6988a4686eefd0819" => :big_sur
-    sha256 "67c3d8b4f5adcfe3da2651c5f300b56a2129130db579c65eda952023ef305849" => :arm64_big_sur
-    sha256 "057a9e1fafd85ec2f65ecbfb651f6299cbbaab630158d6cf6d1057b43f7b9f29" => :catalina
-    sha256 "ffffeb9ad7f2892187d26fde97bc8f47ba4b27bf95ea8bcc1ce43a09771f7d51" => :mojave
-  end
-
   option "with-Accelerate", "Use Apple Accelerate for BLAS"
   option "with-ExtLAPACK", "Use external LAPACK (from BLAS lib)"
 
@@ -65,13 +58,13 @@ class RBlas < Formula
       if build.with? "openblas"
 	args << "--with-blas=-L#{Formula["openblas"].opt_lib} -lopenblas"
       end
-      if build.with? "Accelerate"
+      if build.with? "accelerate"
 	args << "--with-blas=-framework Accelerate"
       end
-      if build.with?("openblas") && build.with("Accelerate")
-	odie "Options --with-openblas and --with-Accelerate are mutually exclusive."
+      if build.with?("openblas") && build.with("accelerate")
+	odie "Options --with-openblas and --with-accelerate are mutually exclusive."
       end
-      if build.with? "ExtLAPACK"
+      if build.with? "extLAPACK"
 	args << "--with-lapack"
       end
 
