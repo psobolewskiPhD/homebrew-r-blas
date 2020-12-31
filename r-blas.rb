@@ -6,15 +6,13 @@ class RBlas < Formula
   license "GPL-2.0-or-later"
   revision 1
 
-  keg_only
-
   livecheck do
     url "https://cran.rstudio.com/banner.shtml"
     regex(%r{href=(?:["']?|.*?/)R[._-]v?(\d+(?:\.\d+)+)\.t}i)
   end
 
-  option "with-Accelerate", "Use Apple Accelerate for BLAS"
-  option "with-ExtLAPACK", "Use external LAPACK (from BLAS lib)"
+  option "with-accelerate", "Use Apple Accelerate for BLAS"
+  option "with-extLAPACK", "Use external LAPACK (from BLAS lib)"
 
   depends_on "pkg-config" => :build
   depends_on "gcc" # for gfortran
