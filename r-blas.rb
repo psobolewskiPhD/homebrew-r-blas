@@ -6,7 +6,7 @@ class RBlas < Formula
   license "GPL-2.0-or-later"
   revision 1
 
-  keg_only
+  keg_only "to not clash with homebrew-core"
 
   livecheck do
     url "https://cran.rstudio.com/banner.shtml"
